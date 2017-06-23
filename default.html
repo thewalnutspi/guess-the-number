@@ -38,12 +38,44 @@
 				<p class="alert alert-danger"><span class="glyphicon glyphicon-alert"></span> You don't have JavaScript enabled. Don't you want to see the fancy game?</p>
 			</noscript>
 		</div>
-		<div class="container">
+		<div class="container" style="margin-top: 30px;">
 			<footer class="footer">
 				<p>Samuel Elliott 2017 <a href="https://github.com/thewalnutspi/guess-the-number">https://github.com/thewalnutspi/guess-the-number</a>.</p>
 			</footer>
 		</div>
+		<div style="margin-top: 80px;"></div>
 	</div>
+	
+	<template id="guess-the-number-start-template">
+		<p>A number between 1 and 20 was stolen from /dev/rand.</p>
+		<p>Guess what it is.</p>
+		<p class="guess-the-number-status"></p>
+		<p><button class="btn btn-primary" type="button">Start</button></p>
+	</template>
+	<template id="guess-the-number-enter-template">
+		<form class="form-horizontal">
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Number</label>
+				<div class="col-sm-10">
+					<input class="form-control" type="number" placeholder="Enter a number between 1 and 20" required="required" pattern="^[0-9]+$" />
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-10 col-sm-offset-2">
+					<button class="btn btn-default" type="submit">Next</button>
+				</div>
+			</div>
+		</form>
+	</template>
+	<template id="guess-the-number-correct-ft-template">
+		<h4>You did it - first time!</h4>
+		<p>Wow, that's really great.</p>
+	</template>
+	<template id="guess-the-number-correct-template">
+		<h4>You did it!</h4>
+		<p>Wow, that's great.</p>
+		<p><span class="guess-the-number-attempts"></span> attempt(s).</p>
+	</template>
 	
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -52,7 +84,7 @@
 	<!-- Highlight.js -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
 	<script>hljs.initHighlightingOnLoad();</script>
-	
+	<script src="https://raw.githubusercontent.com/Aaronius/jquery-scrollparent/master/jquery.scrollparent.js"></script>
 	<script src="js/guess-the-number.js"></script>
 </body>
 </html>

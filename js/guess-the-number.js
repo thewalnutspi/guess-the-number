@@ -12,7 +12,6 @@ jQuery(document).ready(function($) {
 		
 		// Generate a number
 		$this.data("guess-the-number-number", $.n = $.guessthenumber.generateNumber(0, 20));
-		alert($.n);
 		$this.data("guess-the-number-counter", 0);
 		
 		$.guessthenumber.renderStartTemplate($this);
@@ -78,7 +77,7 @@ jQuery(document).ready(function($) {
 		
 		var number = $.guessthenumber.getAnswer($this);
 		if((input < 1) || (input > 20)) {
-			$.guessthenumber.message($this, "danger", "You must enter a number between 1 and 20. idiot.");
+			$.guessthenumber.message($this, "danger", "You must enter a number between 1 and 20.");
 		} else if(input < number) {
 			// Less
 			$.guessthenumber.message($this, "warning", "You've guessed too low!");
@@ -91,7 +90,7 @@ jQuery(document).ready(function($) {
 			$.guessthenumber.message($this, "warning", "You've guessed too high!");
 			$.guessthenumber.incrementCounter($this);
 		} else {
-			$.guessthenumber.message($this, "info", "Please enter a number. idiot.");
+			$.guessthenumber.message($this, "info", "Please enter a number.");
 		}
 	};
 	

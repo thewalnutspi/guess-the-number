@@ -15,6 +15,11 @@ jQuery(document).ready(function($) {
 		$this.data("guess-the-number-counter", 0);
 		
 		$.guessthenumber.renderStartTemplate($this);
+		
+		// Setup restart button
+		$this.find(".guess-the-number-restart").on("click", function() {
+			$.guessthenumber.setup($this);
+		});
 	};
 	
 	$.guessthenumber.generateNumber = function(min, max) {
@@ -50,6 +55,7 @@ jQuery(document).ready(function($) {
 	};
 	
 	$.guessthenumber.renderStartTemplate = function($this) {
+		$this.find(".guess-the-number-restart").hide();
 		$this.find(".guess-the-number-container").html($.guessthenumber.start_template.html());
 		$this.find(".btn").on("click", function() {
 			$.guessthenumber.askForInput($this);
@@ -60,6 +66,7 @@ jQuery(document).ready(function($) {
 		$.guessthenumber.renderInputTemplate($this);
 	};
 	$.guessthenumber.renderInputTemplate = function($this) {
+		$this.find(".guess-the-number-restart").show();
 		$this.find(".guess-the-number-container").html($.guessthenumber.enter_template.html());
 		$this.find("form").on("submit", function(event) {
 			event.preventDefault();
@@ -67,6 +74,7 @@ jQuery(document).ready(function($) {
 			if($input.is(":valid"))
 				$.guessthenumber.entered($this, parseInt($input.val()));
 			else $.guessthenumber.message($this, "warning", "Invalid");
+			$input.val("").focus();
 			return false;
 		});
 	};
@@ -100,9 +108,11 @@ jQuery(document).ready(function($) {
 		else $.guessthenumber.renderCorrectTemplate($this, $.guessthenumber.getCounter($this) + 1);
 	};
 	$.guessthenumber.renderCorrectFTTemplate = function($this) {
+		$this.find(".guess-the-number-restart").show();
 		$this.find(".guess-the-number-container").html($.guessthenumber.correct_ft_template.html());
 	};
 	$.guessthenumber.renderCorrectTemplate = function($this, attempts) {
+		$this.find(".guess-the-number-restart").show();
 		$this.find(".guess-the-number-container").html($.guessthenumber.correct_template.html());
 		$this.find(".guess-the-number-attempts").text(attempts);
 	};
